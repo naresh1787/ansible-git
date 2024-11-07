@@ -1,0 +1,18 @@
+name: ansible deploy
+
+on:
+ push:
+   branch:
+     - main
+
+jobs:
+  deploy:
+     runs-on: "self-hosted"
+
+     steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: run ansible playbook
+        run: |
+         ansible-playbook tree.yml -i /home/ansadm/project/client1 -u ansadm
